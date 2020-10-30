@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block home_active %}active{% endblock home_active %}
+
+{% block content %}
+    <section><div class="container">
+    <form action="" METHOD="POST">
+    {% csrf_token %}
+    <p>Are you sure you want to delete {{ object.company }}'s application</p>
+    <button class="btn btn-danger" type="submit">Confirm</button>
+        <button class="btn btn-primary"><a href="{% url 'table' %}" style="color: #fff">Go back</a></button>
+    </form>
+</div></section>
+{% endblock content %}
