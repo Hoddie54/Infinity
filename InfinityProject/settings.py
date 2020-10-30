@@ -142,7 +142,7 @@ MEDIA_ROOT = str(BASE_DIR.joinpath('uploads'))
 MEDIA_URL = 'uploads/'
 
 DEFAULT_FROM_EMAIL = 'ahamza.1997@gmail.com'
-EMAIL_HOST = 'smtp.sendgrid.com'
+EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = env.str("MAIL_KEY")
 EMAIL_PORT = env.int("PORT")
