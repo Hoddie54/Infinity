@@ -1,0 +1,5 @@
+Django
+gunicorn
+WhiteNoise
+psycopg2
+pip
