@@ -5,4 +5,4 @@ psycopg2
 pip
 environs
 dj-database-url
-crispy_forms
+django-crispy-forms
