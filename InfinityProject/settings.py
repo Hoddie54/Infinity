@@ -143,6 +143,6 @@ MEDIA_URL = 'uploads/'
 DEFAULT_FROM_EMAIL = 'ahamza.1997@gmail.com'
 EMAIL_HOST = 'smtp.sendgrid.com'
 EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = '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'
+EMAIL_HOST_PASSWORD = env.str("MAIL_KEY")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
