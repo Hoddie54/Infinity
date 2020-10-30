@@ -142,11 +142,13 @@ MEDIA_ROOT = str(BASE_DIR.joinpath('uploads'))
 MEDIA_URL = 'uploads/'
 
 DEFAULT_FROM_EMAIL = 'ahamza.1997@gmail.com'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = env.str('SENDGRID_USERNAME')
-EMAIL_HOST_PASSWORD = env.str("SENDGRID_API_KEY")
-EMAIL_PORT = env.int("PORT")
-EMAIL_USE_TLS = env.bool("TLS")
+#EMAIL_HOST = 'smtp.sendgrid.net'
+#EMAIL_HOST_USER = env.str('SENDGRID_USERNAME')
+#EMAIL_HOST_PASSWORD = env.str("SENDGRID_API_KEY")
+#EMAIL_PORT = env.int("PORT")
+#EMAIL_USE_TLS = env.bool("TLS")
+SENDGRID_API_KEY=env.str('MAIL_KEY')
+SENDGRID_SANDBOX_MODE_IN_DEBUG=False
 
 
 LOGGING = {
