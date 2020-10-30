@@ -4,3 +4,4 @@ WhiteNoise
 psycopg2
 pip
 environs
+dj-database-url
