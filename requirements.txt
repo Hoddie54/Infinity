@@ -6,3 +6,4 @@ pip
 environs
 dj-database-url
 django-crispy-forms
+django-smtp-ssl
