@@ -3,3 +3,4 @@ gunicorn
 WhiteNoise
 psycopg2
 pip
+environs
