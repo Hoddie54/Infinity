@@ -136,7 +136,7 @@ LOGOUT_REDIRECT_URL = 'home'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = env.str("EMAIL_BACKEND")
 
 MEDIA_ROOT = str(BASE_DIR.joinpath('uploads'))
 MEDIA_URL = 'uploads/'
@@ -145,8 +145,9 @@ DEFAULT_FROM_EMAIL = 'ahamza.1997@gmail.com'
 EMAIL_HOST = 'smtp.sendgrid.com'
 EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = env.str("MAIL_KEY")
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_PORT = env.int("PORT")
+EMAIL_USE_TLS = env.bool("TLS")
+
 
 LOGGING = {
     'version': 1,
