@@ -141,9 +141,9 @@ EMAIL_BACKEND = env.str("EMAIL_BACKEND")
 MEDIA_ROOT = str(BASE_DIR.joinpath('uploads'))
 MEDIA_URL = 'uploads/'
 
-DEFAULT_FROM_EMAIL = 'ahamza.1997@gmail.com'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'apikey'
+DEFAULT_FROM_EMAIL = 'amir@educationequation.co.uk'
+EMAIL_HOST = 'mail.smtp2go.com'
+EMAIL_HOST_USER = 'educationequation.co.uk'
 EMAIL_HOST_PASSWORD = env.str("MAIL_KEY")
 EMAIL_PORT = env.int("PORT")
 EMAIL_USE_TLS = env.bool("TLS")
