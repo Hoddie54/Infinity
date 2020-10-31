@@ -9,8 +9,14 @@ class NewApplication(forms.Form):
     priority = forms.ChoiceField(choices=PRIORITY_CHOICES)
     industry = forms.CharField(max_length=150)
     company = forms.CharField(max_length=150)
-    open_date = forms.DateField(initial="DD/MM/YYYY", required=False)
-    close_date = forms.DateField(initial="DD/MM/YYYY", required=False)
+    open_date = forms.DateField(initial="DD/MM/YYYY", required=False, widget=forms.TextInput(
+        attrs={
+            'class': 'datepicker'
+        }))
+    close_date = forms.DateField(initial="DD/MM/YYYY", required=False, widget=forms.TextInput(
+        attrs={
+            'class': 'datepicker'
+        }))
     link = forms.URLField(initial="")
 
 class GetHelpForm(forms.Form):

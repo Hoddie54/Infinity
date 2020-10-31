@@ -33,7 +33,7 @@ def TableView(request):
         open = datetime.strptime(request.POST.get('open_date'), '%d/%m/%Y').strftime('%Y-%m-%d')
         close = datetime.strptime(request.POST.get('close_date'), '%d/%m/%Y').strftime('%Y-%m-%d')
         new_app = Application(priority=request.POST.get('priority'), user=request.user,
-                            open_date=open,
+                              open_date=open,
                               close_date=close,
                               company=request.POST.get('company'),
                               industry=request.POST.get('industry'),

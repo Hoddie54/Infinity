@@ -197,6 +197,15 @@
                 "dom": '<"off-md-10">t'
             });
 
+            $('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "2020:2022",
+                dateFormat: 'dd/mm/yy',
+            });
+
+
+            $('#ui-datepicker-div').css('clip', 'auto');
         });
     </script>
 {% endblock scripts %}
