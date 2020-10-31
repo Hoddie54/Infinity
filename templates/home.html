@@ -14,9 +14,12 @@
     <div class="container-fluid" data-aos="fade-up">
       <div class="row justify-content-center">
         <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1>Get the dream job you seek at top firms</h1>
-          <h2>Plan all of your job applications in one place! No hassle, No fuss!</h2>
-          <div><a href="{% url 'signup' %}" class="btn-get-started scrollto">Get Started</a></div>
+          <h1>Land your dream job this year</h1><br/>
+            <h2>Use our FREE job & internship tracker to manage all your applications in 1 place</h2>
+            <!--<h1 style="font-size: large">AND</h1>-->
+            <h2>Get tailored and affordable help <i>when</i> you need it from industry experts</h2>
+            <div><a href="{% url 'signup' %}" class="btn-get-started scrollto mr-4">Sign up</a>
+                <a href="{% url 'free_session' %}" class="btn-get-started scrollto">Book a free 1:1</a></div>
         </div>
         <div class="col-xl-4 col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
           <img src="{% static 'assets/img/hero-img.png'%}" class="img-fluid animated" alt="">
@@ -37,17 +40,17 @@
             <img src="{% static 'assets/img/about.jpg'%}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
-            <h3>Voluptatem dignissimos provident quasi corporis</h3>
+            <h3>Our free application tracker will help you to:</h3>
             <p class="font-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+
             </p>
             <ul>
-              <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                <li><i class="icofont-check-circled"></i>Keep track of all your deadlines</li>
+                <li><i class="icofont-check-circled"></i>Identify which part of the application process you need most help on</li>
+                <li><i class="icofont-check-circled"></i>Build a database of all your applications</li>
+                <li><i class="icofont-check-circled"></i>Store your notes on each part of the process</li>
             </ul>
-            <a href="#" class="read-more">Read More <i class="icofont-long-arrow-right"></i></a>
+            <a href="{% url 'signup' %}" class="read-more">Sign up now<i class="icofont-long-arrow-right"></i></a>
           </div>
         </div>
 
@@ -55,6 +58,7 @@
     </section><!-- End About Section -->
 
     <!-- ======= Counts Section ======= -->
+      <!--
     <section id="counts" class="counts">
       <div class="container">
 
@@ -83,15 +87,16 @@
         </div>
 
       </div>
-    </section><!-- End Counts Section -->
+    </section>--><!-- End Counts Section -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Services</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2>What we do</h2>
+          <p>Our industry experts are experienced professionals that have helped dozens of young people land top internships and careers in banking, consulting, law and more.</p>
+           <br/> <p>Try it out yourself with our <a href="{% url 'free_session' %}">free 1-to-1</a></p>
         </div>
 
         <div class="row">
@@ -103,8 +108,8 @@
                 </svg>
                 <i class="bx bxl-dribbble"></i>
               </div>
-              <h4><a href="">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <h4><a href="">CV & Résumes</a></h4>
+              <p>Build a strong CV that showcases your unique value</p>
             </div>
           </div>
 
@@ -116,8 +121,8 @@
                 </svg>
                 <i class="bx bx-file"></i>
               </div>
-              <h4><a href="">Sed Perspiciatis</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <h4><a href="">COVER LETTERS</a></h4>
+              <p>Write a compelling cover letter on why you are a great fit</p>
             </div>
           </div>
 
@@ -129,8 +134,8 @@
                 </svg>
                 <i class="bx bx-tachometer"></i>
               </div>
-              <h4><a href="">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <h4><a href="">INTERVIEW PREPARATION</a></h4>
+              <p>Answer questions with structure, confidence and personality</p>
             </div>
           </div>
 
@@ -142,8 +147,8 @@
                 </svg>
                 <i class="bx bx-layer"></i>
               </div>
-              <h4><a href="">Nemo Enim</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <h4><a href="">CASE STUDY PRACTICE</a></h4>
+              <p>Crack the principles on how to solve cases with ease</p>
             </div>
           </div>
 
@@ -155,8 +160,8 @@
                 </svg>
                 <i class="bx bx-slideshow"></i>
               </div>
-              <h4><a href="">Dele Cardo</a></h4>
-              <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+              <h4><a href="">NUMERICAL TESTS</a></h4>
+              <p>Master your timing, accuracy and method</p>
             </div>
           </div>
 
@@ -168,8 +173,8 @@
                 </svg>
                 <i class="bx bx-arch"></i>
               </div>
-              <h4><a href="">Divera Don</a></h4>
-              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+              <h4><a href="">OTHER</a></h4>
+              <p>We will accommodate additional requests, case by case</p>
             </div>
           </div>
 
@@ -179,7 +184,7 @@
     </section><!-- End Services Section -->
 
     <!-- ======= Features Section ======= -->
-    <section id="features" class="features">
+    <!--<section id="features" class="features">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -215,11 +220,11 @@
           </div>
         </div>
 
-      </div>
+      </div>-->
     </section><!-- End Features Section -->
 
     <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
+    <!--<section id="testimonials" class="testimonials section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -287,9 +292,10 @@
         </div>
 
       </div>
-    </section><!-- End Testimonials Section -->
+    </section>--><!-- End Testimonials Section -->
 
     <!-- ======= Portfolio Section ======= -->
+      <!--
     <section id="portfolio" class="portfolio">
       <div class="container" data-aos="fade-up">
 
@@ -440,9 +446,8 @@
         </div>
 
       </div>
-    </section><!-- End Portfolio Section -->
-
-    <!-- ======= Pricing Section ======= -->
+    </section>--><!-- End Portfolio Section -->
+    <!-- ======= Pricing Section ======= --><!--
     <section id="pricing" class="pricing section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -525,9 +530,10 @@
         </div>
 
       </div>
-    </section><!-- End Pricing Section -->
+    </section>--><!-- End Pricing Section -->
 
     <!-- ======= Frequently Asked Questions Section ======= -->
+      <!--
     <section id="faq" class="faq">
       <div class="container" data-aos="fade-up">
 
@@ -587,9 +593,10 @@
         </div>
 
       </div>
-    </section><!-- End Frequently Asked Questions Section -->
+    </section>--><!-- End Frequently Asked Questions Section -->
 
     <!-- ======= Contact Section ======= -->
+      <!--
     <section id="contact" class="contact section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -663,11 +670,11 @@
         </div>
 
       </div>
-    </section><!-- End Contact Section -->
+    </section>--><!-- End Contact Section -->
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
+  <!-- ======= Footer ======= --><!--
   <footer id="footer">
 
     <div class="footer-top">
@@ -726,11 +733,12 @@
           <div class="copyright">
             &copy; Copyright <strong><span>Infinity</span></strong>. All Rights Reserved
           </div>
-          <div class="credits">
+          <div class="credits">-->
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/Infinity-free-skin-bootstrap-3/ -->
+           <!--
             Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
           </div>
         </div>
@@ -744,7 +752,7 @@
       </div>
 
     </div>
-  </footer><!-- End Footer -->
+  </footer> --><!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
   <div id="preloader"></div>

@@ -8,18 +8,47 @@
 
 
  <!-- ======= About Section ======= -->
+    <style>
+        table td,
+        table th {
+          border: 0px solid silver;
+        }
+
+        .headerSortDown:after,
+        .headerSortUp:after {
+          content: ' ';
+          position: relative;
+          left: 2px;
+          border: 6px solid transparent;
+        }
+
+        .headerSortDown:after {
+          top: 15px;
+          border-top-color: silver;
+        }
+
+        .headerSortUp:after {
+          bottom: 5px;
+          border-bottom-color: silver;
+        }
+
+        .headerSortDown,
+        .headerSortUp {
+          padding-right: 5px;
+        }
+    </style>
     <section class="about">
       <div class="container">
         <div class="row-12">
           <table id="mainTable" class="table table-dark table-hover table-responsive-md" style="border-radius: 20px ; border-style: hidden">
            <thead>
            <tr>
-               <th scope="col">Priority</th>
-               <th scope="col">Industry</th>
-               <th scope="col">Company</th>
-               <th scope="col">Open Date</th>
-               <th scope="col">Close Date</th>
-               <th scope="col">Stage</th>
+               <th scope="col" class="headerSortDown">Priority</th>
+               <th scope="col" class="headerSortDown">Industry</th>
+               <th scope="col" class="headerSortDown">Company</th>
+              <!-- <th scope="col" class="headerSortDown">Open Date</th>-->
+               <th scope="col" class="headerSortDown">Close Date</th>
+               <th scope="col" class="headerSortDown">Stage</th>
                <th scope="col">Open/Edit</th>
                <th scope="col">Notes</th>
                <th scope="col">Link</th>
@@ -32,7 +61,7 @@
                <td>{{ application.priority }}</td>
                <td>{{ application.industry }}</td>
                <td>{{ application.company }}</td>
-               <td>{{ application.open_date }}</td>
+               <!--<td></td>-->
                <td>{{ application.close_date }}</td>
                <td>{{ application.stage }}</td>
                <td><button type="button" class="btn btn-primary"><a href="{% url 'application_update' application.pk %}" style="color: #fff">Open</a></button></td>

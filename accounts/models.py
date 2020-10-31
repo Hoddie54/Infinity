@@ -44,9 +44,10 @@ class CustomUser(AbstractUser):
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
     university = models.CharField(max_length=150)
-    number = models.PositiveIntegerField(null=True, blank=True)
+    number = models.CharField(null=True, blank=True, max_length=14, verbose_name='Phone Number')
     linkedin_url = models.URLField(null=True, blank=True)
     cv = models.FileField(null=True, blank=True, validators=[file_size])
+    additional_files = models.FileField(null=True, blank=True, validators=[file_size])
     username = None
 
     REQUIRED_FIELDS = ['first_name', 'last_name', 'university']

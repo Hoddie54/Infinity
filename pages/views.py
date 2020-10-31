@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from .models import Application, Notes
 from accounts.models import CustomUser
-from .forms import NewApplication, GetHelpForm
+from .forms import NewApplication, GetHelpForm, FreeSessionForm
 from datetime import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
@@ -33,7 +33,7 @@ def TableView(request):
         open = datetime.strptime(request.POST.get('open_date'), '%d/%m/%Y').strftime('%Y-%m-%d')
         close = datetime.strptime(request.POST.get('close_date'), '%d/%m/%Y').strftime('%Y-%m-%d')
         new_app = Application(priority=request.POST.get('priority'), user=request.user,
-                              open_date=open,
+                            open_date=open,
                               close_date=close,
                               company=request.POST.get('company'),
                               industry=request.POST.get('industry'),
@@ -67,6 +67,7 @@ class GetHelpView(FormView):
     def form_valid(self, form):
         self.send_mail(form.cleaned_data)
         self.request.user.cv = form.cleaned_data.get('cv')
+        self.request.user.additional_files = form.cleaned_data.get('additional_files')
         self.request.user.save()
         return super(GetHelpView, self).form_valid(form)
 
@@ -135,3 +136,21 @@ class NotesUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
                 return True
 
         return False
+
+class FreeSessionView(FormView):
+    form_class = FreeSessionForm
+    template_name = 'get_help.html'
+    success_url = reverse_lazy('free_session_success')
+
+    def form_valid(self, form):
+        self.send_mail(form.cleaned_data)
+        return super(FreeSessionView, self).form_valid(form)
+
+    def send_mail(self, valid_data):
+        'Free 1-to-1 Requested Help',
+        ('Hi admin! Here is what is up: ' + valid_data.__str__()
+
+         ),
+        'ahamza.1997@gmail.com',
+        ('hoddie54@gmail.com', 'azharharis18@gmail.com'),
+        pass

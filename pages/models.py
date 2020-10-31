@@ -3,10 +3,13 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
+import datetime
+
 from django.dispatch import receiver
 
-STAGE_CHOICES = [('1', 'Stage 1'), ('2', 'Stage2'), ('3', 'Stage 3'),
-                 ('4', 'Stage4'), ('5', 'Stage 5')]
+STAGE_CHOICES = [('Not started', 'Not started'), ('Application submitted', 'Application Submitted'), ('Online tests completed', 'Online tests completed'),
+                 ('Phone / Video interview received', 'Phone / Video interview received'), ('Phone / Video interview complete', 'Phone / Video interview complete'),
+                 ('Final stage interview received', 'Final stage interview received'), ('Rejected', 'Rejected')]
 
 
 class Application(models.Model):
@@ -43,11 +46,11 @@ class Application(models.Model):
 
 class Notes(models.Model):
 
-    notes1 = models.TextField(default="", blank=True, verbose_name=STAGE_CHOICES[0][1])
-    notes2 = models.TextField(default="", blank=True, verbose_name=STAGE_CHOICES[1][1])
-    notes3 = models.TextField(default="", blank=True, verbose_name=STAGE_CHOICES[2][1])
-    notes4 = models.TextField(default="", blank=True, verbose_name=STAGE_CHOICES[3][1])
-    notes5 = models.TextField(default="", blank=True, verbose_name=STAGE_CHOICES[4][1])
+    notes1 = models.TextField(default="", blank=True, verbose_name="Research phase")
+    notes2 = models.TextField(default="", blank=True, verbose_name="Phone / Video interview preparation")
+    notes3 = models.TextField(default="", blank=True, verbose_name="Phone / Video interview reflections")
+    notes4 = models.TextField(default="", blank=True, verbose_name="Final interview preparation")
+    notes5 = models.TextField(default="", blank=True, verbose_name="Reflection on job outcome")
 
     def __str__(self):
         return "Notes"

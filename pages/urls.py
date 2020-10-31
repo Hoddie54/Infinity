@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf.urls import url
 from .views import HomeView, GetHelpView, GetHelpSuccess, ApplicationUpdateView, \
-    ApplicationDeleteView, NotesUpdateView
+    ApplicationDeleteView, NotesUpdateView, FreeSessionView
 from django.shortcuts import HttpResponse
 from django.conf import settings
 from django.views.static import serve
@@ -31,6 +31,8 @@ urlpatterns = [
     path('table/', views.TableView, name='table'),
     path('table/<int:pk>', ApplicationUpdateView.as_view(), name='application_update'),
     path('get-help/', GetHelpView.as_view(), name='get_help'),
+    path('book-your-free-session/', FreeSessionView.as_view(), name='free_session'),
+    path('book-your-free-session/success', GetHelpSuccess.as_view() , name='free_session_success'),
     path('get-help/success', GetHelpSuccess.as_view(), name='get_help_success'),
     path('table/<int:pk>/delete', ApplicationDeleteView.as_view(), name='application_delete'),
     path('table/<int:pk>/notes', NotesUpdateView.as_view(), name='notes'),
