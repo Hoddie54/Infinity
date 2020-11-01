@@ -1,5 +1,6 @@
 from django import forms
-
+from django.forms import ModelForm
+from .models import Notes
 from accounts.helper import file_size
 
 class NewApplication(forms.Form):
@@ -39,5 +40,17 @@ class FreeSessionForm(forms.Form):
     email = forms.EmailField()
     help_area = forms.ChoiceField(choices=HELP_AREA_OPTIONS)
     problem = forms.CharField( widget=forms.Textarea(attrs={'rows': 3, 'cols': 5}))
+
+class NotesForm(forms.ModelForm):
+
+    class Meta:
+        model = Notes
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(NotesForm, self).__init__(*args, **kwargs)
+        for i in range(1,6):
+            self.fields['notes' + str(i)].widget.attrs['cols'] = 5
+            self.fields['notes' + str(i)].widget.attrs['rows'] = 3
 
 

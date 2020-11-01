@@ -4,7 +4,7 @@
 
 {% block content %}
     <section><div class="container">
-    <form action="" METHOD="POST">
+    <form action="" METHOD="POST" data-aos="fade-up">
     {% csrf_token %}
     <p>Are you sure you want to delete {{ object.company }}'s application</p>
     <button class="btn btn-danger" type="submit">Confirm</button>

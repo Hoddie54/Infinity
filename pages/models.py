@@ -17,8 +17,8 @@ class Application(models.Model):
     priority = models.CharField(max_length=100, choices=PRIORITY_CHOICES)
     industry = models.CharField(max_length=150)
     company = models.CharField(max_length=150)
-    open_date = models.DateField()
-    close_date = models.DateField()
+    open_date = models.DateField(null=True)
+    close_date = models.DateField(null=True)
     stage = models.CharField(max_length=150, choices=STAGE_CHOICES, default=STAGE_CHOICES[0][0])
     user = models.ForeignKey(
         get_user_model(),

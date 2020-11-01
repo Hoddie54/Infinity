@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from .models import Application, Notes
 from accounts.models import CustomUser
-from .forms import NewApplication, GetHelpForm, FreeSessionForm
+from .forms import NewApplication, GetHelpForm, FreeSessionForm, NotesForm
 from datetime import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
@@ -30,8 +30,14 @@ def TableView(request):
 
     if request.method == 'POST':
         form = NewApplication(request.POST)
-        open = datetime.strptime(request.POST.get('open_date'), '%d/%m/%Y').strftime('%Y-%m-%d')
-        close = datetime.strptime(request.POST.get('close_date'), '%d/%m/%Y').strftime('%Y-%m-%d')
+        try:
+            open = datetime.strptime(request.POST.get('open_date'), '%d/%m/%Y').strftime('%Y-%m-%d')
+        except:
+            open = None
+        try:
+            close = datetime.strptime(request.POST.get('close_date'), '%d/%m/%Y').strftime('%Y-%m-%d')
+        except:
+            close = None
         new_app = Application(priority=request.POST.get('priority'), user=request.user,
                               open_date=open,
                               close_date=close,
@@ -120,13 +126,10 @@ class ApplicationDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView)
         return logged_in_user == Application.objects.get(pk=self.kwargs.get('pk')).user_id
 
 class NotesUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    form_class = NotesForm
     model = Notes
     template_name = 'notes.html'
     success_url = reverse_lazy('table')
-
-    fields = ()
-    for i in range(1,6):
-        fields = fields + (('notes' + str(i)),)
 
     def test_func(self):
         logged_in_user = self.request.user
