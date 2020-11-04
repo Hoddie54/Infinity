@@ -37,6 +37,7 @@ def TableView(request):
                 new_app = Application(
                     priority=autoapplication.priority,
                     user=request.user,
+                    job_title=autoapplication.job_title,
                     open_date=autoapplication.open_date,
                     close_date=autoapplication.close_date,
                     company=autoapplication.company,
@@ -57,6 +58,7 @@ def TableView(request):
             new_app = Application(priority=request.POST.get('priority'), user=request.user,
                                   open_date=open,
                                   close_date=close,
+                                  job_title=request.POST.get('job_title'),
                                   company=request.POST.get('company'),
                                   industry=request.POST.get('industry'),
                                   link=request.POST.get('link'),)
@@ -119,8 +121,8 @@ class ApplicationUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
 
     fields = (
         'priority',
-        'industry',
         'company',
+        'job_title',
         'open_date',
         'close_date',
         'link',

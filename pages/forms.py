@@ -10,7 +10,8 @@ class NewApplicationForm(forms.Form):
     PRIORITY_CHOICES = [ ("Low", "Low"), ("Medium", "Medium"), ('High', 'High'),]
 
     priority = forms.ChoiceField(choices=PRIORITY_CHOICES)
-    industry = forms.CharField(max_length=150)
+    #industry = forms.CharField(max_length=150)
+    job_title = forms.CharField()
     company = forms.ModelChoiceField(queryset=Firm.objects.all(), to_field_name='name')
     open_date = forms.DateField(initial="DD/MM/YYYY", required=False, widget=forms.TextInput(
         attrs={

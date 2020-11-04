@@ -59,8 +59,8 @@
            <thead>
            <tr>
                <th scope="col" class="headerSortDown" data-placement="top" title="Hey">Priority</th>
-               <th scope="col" class="headerSortDown">Industry</th>
                <th scope="col" class="headerSortDown">Company</th>
+               <th scope="col" class="headerSortDown">Job title</th>
               <!-- <th scope="col" class="headerSortDown">Open Date</th>-->
                <th scope="col" class="headerSortDown">Close Date</th>
                <th scope="col" class="headerSortDown">Stage</th>
@@ -74,8 +74,8 @@
            {% for application in application_list %}
            <tr>
                <td>{{ application.priority }}</td>
-               <td>{{ application.industry }}</td>
                <td>{{ application.company }}</td>
+               <td>{{ application.job_title }}</td>
                <!--<td></td>-->
                <td>{{ application.close_date }}</td>
                <td>{{ application.stage }}</td>
@@ -132,10 +132,10 @@
                     {{ form1.priority|as_crispy_field }}
                 </div>
                 <div class="col-md-2 col-lg" >
-                    {{ form1.industry|as_crispy_field }}
+                    {{ form1.company|as_crispy_field }}
                 </div>
                 <div class="col-md-2 col-lg" >
-                    {{ form1.company|as_crispy_field }}
+                    {{ form1.job_title|as_crispy_field }}
                 </div>
                 <div class="col-md-2 col-lg" >
                     {{ form1.open_date|as_crispy_field }}

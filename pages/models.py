@@ -15,8 +15,9 @@ STAGE_CHOICES = [('Not started', 'Not started'), ('Application submitted', 'Appl
 class Application(models.Model):
     PRIORITY_CHOICES = [('Low', 'Low'), ('Medium', 'Medium'), ('High', 'High')]
     priority = models.CharField(max_length=100, choices=PRIORITY_CHOICES)
-    industry = models.CharField(max_length=150)
+    industry = models.CharField(max_length=150, null=True, blank=True)
     company = models.CharField(max_length=150)
+    job_title = models.CharField(max_length=150, null=True)
     open_date = models.DateField(null=True, blank=True)
     close_date = models.DateField(null=True, blank=True)
     stage = models.CharField(max_length=150, choices=STAGE_CHOICES, default=STAGE_CHOICES[0][0])
