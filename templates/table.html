@@ -41,19 +41,18 @@
       <div class="container" data-aos="fade-up">
         <div class="row-12">
         {% if application_list|length == 0 %}
-        <div class="alert alert-warning">
-        <p>Thanks for signing up to Infinity! If you'd like, we can pre-populate your tracker with
-        consulting internships. Use the tracker to organise all your applications in one place.</p>
-        <p>When you reach a new stage, remember to update the tracker.</p>
-        <p>The note taking functionality is especially powerful - plan your own notes whilst
-            reading the advice our experts have given on that <b>specific</b> firm</p>
+        <div class="alert alert-warning text-center">
+        <h3 class="">Welcome to Infinity, {{ user.first_name }}</h3>
+        <p>Organise and manage all your applications in one place with our tracker.</p>
+        <p>Powerful notetaking: View FREE expert guidance on how to master each part of the process for a specific firm, whilst taking your own notes.</p>
+        <p>Add consulting summer internships to the tracker instantly (or add your own and this message will disappear)</p>
             <form method="POST" id="Auto_add">
                 {% csrf_token %}
                 {{ form2.as_p }}
                 <button name="auto_fill" id="auto_add_applications" type="submit" class="btn btn-primary">Add consulting applications</button>
             </form>
         <br/>
-            <small><i>Please note, I will leave as soon as you add your first item to the tracker</i></small>
+
         </div>
         {% else %}
           <table id="mainTable" class="table table-dark table-hover table-responsive-md" style="border-radius: 20px ; border-style: hidden">
@@ -155,9 +154,9 @@
         </form>
 
         <br /><br />
-        <div class="alert alert-warning text-center"><h5>We have gifted you a free 30 minute
-            consultation with one of our experts</h5> <p>
-            Take advantage of this offer and receive specialist expertise on one of your applications</p>
+        <div class="alert alert-warning text-center">
+            <h5>Hi {{ user.first_name }}, we have gifted you a FREE 30 minute consultation with Azhar.</h5>
+                <p>Take advantage of this offer and gain an unfair advantage on your applications.</p>
             <button class="btn btn-success"><a href="{% url 'profile' %}" style="color: #fff">View profile now</a></button>
 
         </div>

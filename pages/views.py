@@ -30,7 +30,9 @@ def TableView(request):
                'form1': form1, 'form2': form2}
 
     if request.method == 'POST':
-        if(request.POST.get('autofill') == 'on'):
+        #print(request.POST.get('auto_fill') + "hey")
+        #print(request.POST)
+        if(request.POST.get('auto_fill') == ''):
             for autoapplication in AutoAddApplication.objects.all():
                 new_app = Application(
                     priority=autoapplication.priority,

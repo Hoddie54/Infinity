@@ -23,7 +23,7 @@ class NewApplicationForm(forms.Form):
     link = forms.URLField(initial="")
 
 class AutofillForm(forms.Form):
-    autofill = forms.BooleanField()
+    autofill = forms.BooleanField(label="", widget=forms.Select(attrs={'hidden': 'True'}))
 
 class GetHelpForm(forms.Form):
 
