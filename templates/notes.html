@@ -4,11 +4,31 @@
 
 {% block content %}
     <section><div class="container">
+        {% if not article is None %}
+            {{ article }}
+            HEY
+        {% endif %}
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#info">How to get into this firm</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#notes">My notes</a>
+            </li>
+        </ul>
+        <br />
+    <div class="tab-content">
+        <div class="row tab-pane fade show active" id="notes">
+        <div class="col-md-8">
+
     <form action="" METHOD="POST" data-aos="fade-up">
     {% csrf_token %}
     {{  form|crispy}}
     <button class="btn btn-primary" type="submit">Submit</button>
         <button class="btn btn-danger"><a href="{% url 'table' %}" style="color: #fff">Cancel</a></button>
     </form>
+        </div> </div>
+        <div class="tab-pane fade" id="info">Coming soon</div>
+    </div>
 </div></section>
 {% endblock content %}

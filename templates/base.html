@@ -27,6 +27,7 @@
  <link href="{% static 'assets/vendor/jquery-ui.css' %}" rel="stylesheet">
     <link href="{% static 'assets/vendor/jquery-ui.structure.min.css' %}" rel="stylesheet">
  <link href="{% static 'assets/vendor/jquery-ui.theme.css' %}" rel="stylesheet">
+
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/style.css'%}" rel="stylesheet">
 
@@ -52,7 +53,8 @@
           {% if user.is_authenticated %}
               <nav class="nav-menu d-none d-lg-block">
             <ul>
-              <li class="{% block home_active %}{% endblock home_active %}"><a href="{% url 'table' %}">Home</a></li>
+              <li class="{% block dashboard_active %}{% endblock dashboard_active %}"><a href="{% url 'dashboard' %}">My dashboard</a></li>
+            <li class="{% block table_active %}{% endblock table_active %}"><a href="{% url 'table' %}">My applications</a></li>
                 <li class="{% block help_active %}{% endblock help_active %}"><a href="{% url 'get_help' %}" class="get-started-btn">Get Help</a></li>
               <!--<li><a href="#about">About</a></li>
               <li><a href="#services">Services</a></li>
@@ -139,6 +141,7 @@
   <script src="{% static 'assets/vendor/jquery.dataTables.min.js' %}"></script>
   <script src="{% static 'assets/vendor/dataTables.bootstrap4.min.js' %}"></script>
   <script src="{% static 'assets/vendor/jquery-ui.js' %}"></script>
+  <script src="https://kit.fontawesome.com/469135f35c.js" crossorigin="anonymous"></script>
   <!-- Template Main JS File -->
   <script src="{% static 'assets/js/main.js'%}"></script>
 

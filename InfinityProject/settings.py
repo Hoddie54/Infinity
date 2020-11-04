@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'pages',
+    'articles',
     'crispy_forms',
     'whitenoise.runserver_nostatic',
 ]

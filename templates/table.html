@@ -40,6 +40,22 @@
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
         <div class="row-12">
+        {% if application_list|length == 0 %}
+        <div class="alert alert-warning">
+        <p>Thanks for signing up to Infinity! If you'd like, we can pre-populate your tracker with
+        consulting internships. Use the tracker to organise all your applications in one place.</p>
+        <p>When you reach a new stage, remember to update the tracker.</p>
+        <p>The note taking functionality is especially powerful - plan your own notes whilst
+            reading the advice our experts have given on that <b>specific</b> firm</p>
+            <form method="POST" id="Auto_add">
+                {% csrf_token %}
+                {{ form2.as_p }}
+                <button name="auto_fill" id="auto_add_applications" type="submit" class="btn btn-primary">Add consulting applications</button>
+            </form>
+        <br/>
+            <small><i>Please note, I will leave as soon as you add your first item to the tracker</i></small>
+        </div>
+        {% else %}
           <table id="mainTable" class="table table-dark table-hover table-responsive-md" style="border-radius: 20px ; border-style: hidden">
            <thead>
            <tr>
@@ -49,7 +65,7 @@
               <!-- <th scope="col" class="headerSortDown">Open Date</th>-->
                <th scope="col" class="headerSortDown">Close Date</th>
                <th scope="col" class="headerSortDown">Stage</th>
-               <th scope="col">Open/Edit</th>
+               <th scope="col">Edit</th>
                <th scope="col">Notes</th>
                <th scope="col">Link</th>
                <th scope="col">Get Help</th>
@@ -64,12 +80,13 @@
                <!--<td></td>-->
                <td>{{ application.close_date }}</td>
                <td>{{ application.stage }}</td>
-               <td><button type="button" class="btn btn-primary"><a href="{% url 'application_update' application.pk %}" style="color: #fff">Open</a></button></td>
-               <td><button type="button" class="btn btn-primary"><a href="{% url 'notes' application.notes.pk %}" style="color: #fff">Open</a></button></td>
+               <td style="text-align: center"><a class="fas fa-edit" href="{% url 'application_update' application.pk %}" style="color: #fff"></a></td>
+               <td style="text-align: center"><a class="fas fa-sticky-note" href="{% url 'notes' application.notes.pk %}" style="color: #fff"></a></td>
                <td><button type="button" class="btn btn-primary"><a href="{{ application.link }}" target="_blank" class="" style="color: #fff">Go</a></button></td>
                <td><button type="button" class="btn btn-success"><a href="{% url 'get_help' %}" style="color: #fff">Get Help</a></button></td>
            </tr>
            {% endfor %}
+
            <!--
            <tr>
                <td>High</td>
@@ -108,32 +125,43 @@
            </tbody>
 
        </table>
-
+        {% endif %}
         <form action="" method="POST">
             {% csrf_token %}
             <div class="form-row">
                 <div class="col-md-2 col-lg">
-                    {{ form.priority|as_crispy_field }}
+                    {{ form1.priority|as_crispy_field }}
                 </div>
                 <div class="col-md-2 col-lg" >
-                    {{ form.industry|as_crispy_field }}
+                    {{ form1.industry|as_crispy_field }}
                 </div>
                 <div class="col-md-2 col-lg" >
-                    {{ form.company|as_crispy_field }}
+                    {{ form1.company|as_crispy_field }}
                 </div>
                 <div class="col-md-2 col-lg" >
-                    {{ form.open_date|as_crispy_field }}
+                    {{ form1.open_date|as_crispy_field }}
                 </div>
                 <div class="col-md-2 col-lg" >
-                    {{ form.close_date|as_crispy_field }}
+                    {{ form1.close_date|as_crispy_field }}
                 </div>
                 <div class="col-md-2 col-lg" >
-                    {{ form.link|as_crispy_field }}
+                    {{ form1.link|as_crispy_field }}
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                    <input id="add_application" type="submit" class="btn btn-success" value="Add new">
+                </div>
                 </div>
 
-            </div>
-<input type="submit" class="btn btn-success" value="Add new">
         </form>
+
+        <br /><br />
+        <div class="alert alert-warning text-center"><h5>We have gifted you a free 30 minute
+            consultation with one of our experts</h5> <p>
+            Take advantage of this offer and receive specialist expertise on one of your applications</p>
+            <button class="btn btn-success"><a href="{% url 'profile' %}" style="color: #fff">View profile now</a></button>
+
+        </div>
+
 
 <!--
             <form method="POST" action="#">
@@ -208,6 +236,22 @@
             $('#ui-datepicker-div').css('clip', 'auto');
 
             $('[data-toggle="ui-tooltip"]').tooltip();
+
+            $('select').on('change', function(e){
+                var optionSelected = $("option:selected", this);
+                var valueSelected = this.value;
+                //alert(this.options.length);
+                //alert(optionSelected);
+                //alert(valueSelected);
+                if(this.name == 'company'){
+                    if(valueSelected == 'Other') {
+                        $(this).replaceWith('<input type="text" name="company" maxlength="150" class="textinput textInput form-control" required id="id_company">', false);
+                    }
+                }
+                //alert(this.name);
+                //alert(this.value); Number
+                //alert(this.options.length);
+            });
         });
     </script>
 {% endblock scripts %}

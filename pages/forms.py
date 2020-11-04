@@ -1,15 +1,17 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Notes
+from articles.models import Firm
 from accounts.helper import file_size
+from itertools import chain
 
-class NewApplication(forms.Form):
+class NewApplicationForm(forms.Form):
 
     PRIORITY_CHOICES = [ ("Low", "Low"), ("Medium", "Medium"), ('High', 'High'),]
 
     priority = forms.ChoiceField(choices=PRIORITY_CHOICES)
     industry = forms.CharField(max_length=150)
-    company = forms.CharField(max_length=150)
+    company = forms.ModelChoiceField(queryset=Firm.objects.all(), to_field_name='name')
     open_date = forms.DateField(initial="DD/MM/YYYY", required=False, widget=forms.TextInput(
         attrs={
             'class': 'datepicker'
@@ -19,6 +21,9 @@ class NewApplication(forms.Form):
             'class': 'datepicker'
         }))
     link = forms.URLField(initial="")
+
+class AutofillForm(forms.Form):
+    autofill = forms.BooleanField()
 
 class GetHelpForm(forms.Form):
 

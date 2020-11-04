@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <section class="services" style="overflow: visible" data-aos="fade">
+        <div class="container">
+            <div class="row">
+                <!-- Main profile-->
+                <div class="col-lg-8 card">
+                    <!-- Face and name -->
+                    <div class="row card-body">
+                        <!-- Face -->
+                        <div class="col-4 mb-3">
+                            <div class="" style="padding-bottom: 100%; overflow: hidden; position: relative;">
+                            <img src="{% static 'images/azhar.png' %}" class="img-fluid " style="position: absolute">
+                            </div>
+                        </div>
+                        <!-- Name-->
+                        <div class="col-8">
+                            <div class="d-flex justify-content-between">
+                            <div class="pull-left">
+                                <h3>Azhar Haris</h3>
+                            </div>
+                            <div class="pull-right">
+                                <h4>£60/hr</h4>
+                            </div>
+                            </div>
+
+                            <p><b>Previously worked at: </b><i>IBM business solutions</i></p>
+                            <p><b>Sessions delivered:</b> <i>32</i></p>
+                        </div>
+                    </div>
+                    <h4>My Profile</h4>
+                    <hr/>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+
+                    <h4>My portfolio</h4>
+                    <hr/>
+                    <i>Click below to expand an example of a CV before and after Azhar has helped</i><br/>
+                    <h5><a data-toggle="collapse" href="#before">Before:</a></h5>
+                    <div class="w-100 h-25 collapse" id="before">
+                            <embed src="{% static 'images/Amir.pdf' %}" class="w-100 h-100"/>
+                    </div>
+                    <h5><a data-toggle="collapse" href="#after">After:</a></h5>
+                    <div class="w-100 h-25 collapse" id="after">
+                            <embed src="{% static 'images/Amir.pdf' %}" class="w-100 h-100"/>
+                    </div>
+
+
+                    <h4>Testimonials</h4>
+                    <hr/>
+                    <div class="testimonials row">
+                            <div class="testimonial-item col-md-6 px-0">
+                                        <p>
+                                          <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                          Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                                          <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                        </p>
+                                        <img src="{% static 'assets/img/testimonials/testimonials-1.jpg'%}" class="testimonial-img" alt="">
+                                        <h3>Saul Goodman</h3>
+                                        <h4>Ceo &amp; Founder</h4>
+                            </div>
+                            <div class="testimonial-item col-md-6 px-0">
+                                        <p>
+                                          <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                          Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                                          <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                        </p>
+                                        <img src="{% static 'assets/img/testimonials/testimonials-1.jpg'%}" class="testimonial-img" alt="">
+                                        <h3>Saul Goodman</h3>
+                                        <h4>Ceo &amp; Founder</h4>
+                            </div>
+                    </div>
+                </div>
+                <!-- Book Azhar-->
+                <div class="col-lg-4">
+                    <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="mt-2">Message Azhar right now</h5>
+                    <div class="alert alert-warning">
+                        A free meeting with Azhar is a great next step. Just ask him below!
+                    </div>
+                        <form method="POST" class="">
+
+                            <input type="radio" class="form-check-input" value="Free 30 minute session">
+                            <label class="form-check-label">Free 30 minute session</label><br/>
+                            <input class="form-check-input" type="radio" value="Paid 60 minute session">
+                            <label class="form-check-label">Paid 60 minute session</label><br/><br/>
+                            <!--<label class="form-check-label"><b>Message for Azhar</b></label><br/>-->
+                            <textarea class="form-control" rows="5" type="text" value="">Hi Azhar, I'm looking for some help on my applications. Are you available for a free meeting with me?</textarea>
+                            <button type="submit" class="btn btn-primary my-2">Send message</button>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

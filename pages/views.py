@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, FormView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from .models import Application, Notes
-from accounts.models import CustomUser
-from .forms import NewApplication, GetHelpForm, FreeSessionForm, NotesForm
+from .models import Application, Notes, AutoAddApplication
+from articles.models import Firm, Article
+from .forms import NewApplicationForm, GetHelpForm, FreeSessionForm, NotesForm, AutofillForm
 from datetime import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
@@ -24,29 +24,43 @@ def original(request):
 
 def TableView(request):
 
-    form = NewApplication()
+    form1 = NewApplicationForm()
+    form2 = AutofillForm()
     context = {'application_list': Application.objects.all().filter(user=request.user),
-               'form': form}
+               'form1': form1, 'form2': form2}
 
     if request.method == 'POST':
-        form = NewApplication(request.POST)
-        try:
-            open = datetime.strptime(request.POST.get('open_date'), '%d/%m/%Y').strftime('%Y-%m-%d')
-        except:
-            open = None
-        try:
-            close = datetime.strptime(request.POST.get('close_date'), '%d/%m/%Y').strftime('%Y-%m-%d')
-        except:
-            close = None
-        new_app = Application(priority=request.POST.get('priority'), user=request.user,
-                              open_date=open,
-                              close_date=close,
-                              company=request.POST.get('company'),
-                              industry=request.POST.get('industry'),
-                              link=request.POST.get('link'),)
-        new_app.save()
-        print(request.POST)
-        HttpResponseRedirect('home')
+        if(request.POST.get('autofill') == 'on'):
+            for autoapplication in AutoAddApplication.objects.all():
+                new_app = Application(
+                    priority=autoapplication.priority,
+                    user=request.user,
+                    open_date=autoapplication.open_date,
+                    close_date=autoapplication.close_date,
+                    company=autoapplication.company,
+                    industry=autoapplication.industry,
+                    link=autoapplication.link,
+                                      )
+                new_app.save()
+        else:
+            form = NewApplicationForm(request.POST)
+            try:
+                open = datetime.strptime(request.POST.get('open_date'), '%d/%m/%Y').strftime('%Y-%m-%d')
+            except:
+                open = None
+            try:
+                close = datetime.strptime(request.POST.get('close_date'), '%d/%m/%Y').strftime('%Y-%m-%d')
+            except:
+                close = None
+            new_app = Application(priority=request.POST.get('priority'), user=request.user,
+                                  open_date=open,
+                                  close_date=close,
+                                  company=request.POST.get('company'),
+                                  industry=request.POST.get('industry'),
+                                  link=request.POST.get('link'),)
+            new_app.save()
+            #print(request.POST)
+            HttpResponseRedirect('table')
 
     return render(request, 'table.html', context)
 
@@ -55,13 +69,13 @@ def TableView(request):
 def get_name(request):
 
     if request.method == 'POST':
-        form = NewApplication(request.POST)
+        form = NewApplicationForm(request.POST)
         print(request.POST)
         new_app = Application(priority=request.POST.get('priority'), user=request.user)
         new_app.save()
         return HttpResponseRedirect('home')
     else:
-        form = NewApplication()
+        form = NewApplicationForm()
 
     return render(request, 'name.html', {'form': form})
 
@@ -137,8 +151,22 @@ class NotesUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         for application in Application.objects.all().filter(user=logged_in_user):
             if(application.notes.pk == self.kwargs.get('pk')):
                 return True
-
         return False
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        #notes_id = self.kwargs.get('pk')
+        #app = None
+        #for application in Application.objects.all():
+         #   if(application.notes_id == notes_id):
+          #      app = application
+        #print(app)
+        #firm = Firm.objects.get(name=app.company)
+
+        #article = Article.objects.filter(firm=firm)[0]
+        #context['article'] = article
+        return context
+
 
 class FreeSessionView(FormView):
     form_class = FreeSessionForm

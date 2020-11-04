@@ -4,6 +4,7 @@ from .views import HomeView, GetHelpView, GetHelpSuccess, ApplicationUpdateView,
     ApplicationDeleteView, NotesUpdateView, FreeSessionView
 from django.shortcuts import HttpResponse
 from django.conf import settings
+from articles.models import Firm
 from django.views.static import serve
 from django.core.exceptions import ObjectDoesNotExist
 from . import views
@@ -11,16 +12,24 @@ from . import views
 
 def protected_serve(request, path, file_root=None):
     try:
-        if request.user.is_superuser:
-            return serve(request, path, file_root)
-        else:
-            usersurl = request.user.cv.url
-            file_requested = '/uploads/' + path
-            print(request.user.is_superuser)
-            if(usersurl == file_requested):
+        file_requested = '/uploads/' + path
+
+        if request.user is not None:
+            if request.user.is_superuser:
+                return serve(request, path, file_root)
+            elif len(Firm.objects.filter(image=path)) != 0:
+
                 return serve(request, path, file_root)
             else:
-                return HttpResponse("You do not have permission")
+                usersurl = request.user.cv.url
+                print(request.user.is_superuser)
+                if(usersurl == file_requested):
+                    return serve(request, path, file_root)
+                else:
+                    return HttpResponse("You do not have permission")
+        elif len(Firm.objects.filter(image=path)) != 0:
+
+            return serve(request, path, file_root)
     except:
         return HttpResponse("You do not have permission")
 

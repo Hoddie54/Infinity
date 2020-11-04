@@ -23,12 +23,14 @@ class Application(models.Model):
     user = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
+        blank=True,
+        null=True,
     )
     link = models.URLField(default="#")
     creation_time = models.DateTimeField(auto_now_add=True)
 
     notes = models.ForeignKey(
-        'Notes', on_delete=models.CASCADE, related_name='notes', null=True,
+        'Notes', on_delete=models.CASCADE, related_name='notes', null=True, blank=True,
     )
 
     def __str__(self):
@@ -58,3 +60,8 @@ class Notes(models.Model):
     def get_absolute_url(self):
         return reverse('table')
 
+class AutoAddApplication(Application):
+    user = None
+
+    def __str__(self):
+        return 'Automatic application ' + self.company
