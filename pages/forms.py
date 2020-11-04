@@ -27,7 +27,7 @@ class AutofillForm(forms.Form):
 
 class GetHelpForm(forms.Form):
 
-    SESSION_TYPE_OPTIONS = [('1','30 Min free intro to expert'),('2', '60 Minute Session')]
+    SESSION_TYPE_OPTIONS = [('1','30 Minute free introduction to expert'),('2', '60 Minute Paid Session')]
     HELP_AREA_OPTIONS = [('1', "My CV"),('2', "My online tests"), ('3',"Interviews"), ('4', 'Other')]
 
     session_type = forms.ChoiceField(choices=SESSION_TYPE_OPTIONS, widget=forms.RadioSelect)
@@ -44,7 +44,7 @@ class FreeSessionForm(forms.Form):
     name = forms.CharField(max_length=20)
     email = forms.EmailField()
     help_area = forms.ChoiceField(choices=HELP_AREA_OPTIONS)
-    problem = forms.CharField( widget=forms.Textarea(attrs={'rows': 3, 'cols': 5}))
+    problem = forms.CharField(widget=forms.Textarea(attrs={'rows': 3, 'cols': 5}))
 
 class NotesForm(forms.ModelForm):
 

@@ -99,7 +99,7 @@ class GetHelpView(FormView):
              valid_data.get('problem') + ". More information is attached." + valid_data.__str__()
              + "\n \n User: " + self.request.user.__str__()
              ),
-            'ahamza.1997@gmail.com',
+            'office@infinitycareers.co.uk',
             ('hoddie54@gmail.com', 'azharharis18@gmail.com'),
         )
         pass
@@ -182,6 +182,6 @@ class FreeSessionView(FormView):
         ('Hi admin! Here is what is up: ' + valid_data.__str__()
 
          ),
-        'ahamza.1997@gmail.com',
+        'office@infinitycareers.co.uk',
         ('hoddie54@gmail.com', 'azharharis18@gmail.com'),
         pass

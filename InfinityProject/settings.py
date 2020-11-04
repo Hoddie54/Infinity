@@ -142,7 +142,7 @@ EMAIL_BACKEND = env.str("EMAIL_BACKEND")
 MEDIA_ROOT = str(BASE_DIR.joinpath('uploads'))
 MEDIA_URL = 'uploads/'
 
-DEFAULT_FROM_EMAIL = 'ahamza.1997@gmail.com'
+DEFAULT_FROM_EMAIL = 'office@infinitycareers.co.uk'
 #EMAIL_HOST = 'smtp.sendgrid.net'
 #EMAIL_HOST_USER = env.str('SENDGRID_USERNAME')
 #EMAIL_HOST_PASSWORD = env.str("SENDGRID_API_KEY")
