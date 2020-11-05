@@ -35,7 +35,7 @@ class Application(models.Model):
     )
 
     def __str__(self):
-        return self.user.email + ": " + self.industry + " @ " + self.company
+        return self.user.email + ": " + self.job_title + " @ " + self.company
 
     def get_absolute_url(self):
         return reverse('table')
